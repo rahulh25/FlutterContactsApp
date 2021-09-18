@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'Widgets/contacts_card_widget.dart';
+import 'Widgets/contacts_home_widget/contacts_card_widget.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const ContactsApp());
 
 /// This is the main application widget.
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ContactsApp extends StatelessWidget {
+  const ContactsApp({Key? key}) : super(key: key);
 
   static const String _title = 'Contacts';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title),backgroundColor: Colors.lightGreen[900],),
-        body: const MyContactsWidget(),
+        body: const ContactsHomeWidget(),
       ),
     );
   }

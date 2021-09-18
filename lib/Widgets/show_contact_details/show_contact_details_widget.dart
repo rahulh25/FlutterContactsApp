@@ -37,54 +37,6 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                   hintText: 'Phone Number',
                   labeltext: 'Enter Phone Number',
                   textFieldContent: widget.contactDetails.phoneNumber)
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: SizedBox(
-              //     width: 350,
-              //     height: 50,
-              //     child: TextField(
-              //       controller: TextEditingController(
-              //           text: widget.contactDetails.firstName),
-              //       decoration: const InputDecoration(
-              //           hintText: 'First Name',
-              //           contentPadding: EdgeInsets.all(10.0),
-              //           border: OutlineInputBorder(),
-              //           labelText: 'Enter First Name'),
-              //     ),
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: SizedBox(
-              //     width: 350,
-              //     height: 50,
-              //     child: TextField(
-              //       controller: TextEditingController(
-              //           text: widget.contactDetails.lastName),
-              //       decoration: const InputDecoration(
-              //           hintText: 'Last Name',
-              //           contentPadding: EdgeInsets.all(10.0),
-              //           border: OutlineInputBorder(),
-              //           labelText: 'Enter Last Name'),
-              //     ),
-              //   ),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: SizedBox(
-              //     width: 350,
-              //     height: 50,
-              //     child: TextField(
-              //       controller: TextEditingController(
-              //           text: widget.contactDetails.phoneNumber),
-              //       decoration: const InputDecoration(
-              //           hintText: 'Phone Number',
-              //           contentPadding: EdgeInsets.all(10.0),
-              //           border: OutlineInputBorder(),
-              //           labelText: 'Enter Phone Number'),
-              //     ),
-              //   ),
-              // )
             ],
           ),
         ));
