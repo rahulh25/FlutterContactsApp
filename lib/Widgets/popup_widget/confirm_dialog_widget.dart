@@ -45,12 +45,15 @@ class ConfirmDialogBoxWidgetState extends State<ConfirmDialogBoxWidget> {
             if (widget.type == "Edit") {
               contactService.editData(widget.id, widget.firstname,
                   widget.lastname, widget.phoneNumber);
-            } else {
+            } else if (widget.type == "Delete") {
               contactService.deleteData(widget.id);
+            } else {
+              contactService.addData(
+                  widget.firstname, widget.lastname, widget.phoneNumber);
             }
             Navigator.pop(context, true);
-            await Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ContactsApp()));
+            await Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ContactsApp()));
             setState(() {});
           },
         ),

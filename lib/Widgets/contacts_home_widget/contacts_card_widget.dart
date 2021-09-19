@@ -34,7 +34,7 @@ List<Widget> getList(BuildContext context,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
         ),
-        color: Colors.cyan[900],
+        color: Colors.green[900],
         elevation: 2,
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
@@ -53,11 +53,8 @@ List<Widget> getList(BuildContext context,
             child: Column(
               children: [
                 ContactDetailsTextWidget(
-                    labelTxt: 'First Name: ', fieldValue: contact.firstName),
-                ContactDetailsTextWidget(
-                    labelTxt: 'Last Name: ', fieldValue: contact.lastName),
-                ContactDetailsTextWidget(
-                    labelTxt: 'Phone Number: ', fieldValue: contact.phoneNumber)
+                    fieldValue: contact.firstName + contact.lastName),
+                ContactDetailsTextWidget(fieldValue: contact.phoneNumber),
               ],
             ),
           ),
