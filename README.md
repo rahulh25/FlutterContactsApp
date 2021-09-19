@@ -11,6 +11,7 @@ This project demontrates a contacts app using flutter. It uses SQLLite as it's d
 
 ## Getting Started
 
+
 To run the project you can folow the following steps:
 
 <ol>
@@ -21,10 +22,9 @@ To run the project you can folow the following steps:
 ```js
 flutter run
 ```
-
  <li> You can see the folliowing homepage pop up on your Emulator</li>
 
-<img src="../fluttercontactsapp/screenshots/homescreen.jpg" width="300" height="600">
+ ![home screen](/screenshots/homescreen.jpg)
 
 </ol>
 
@@ -34,12 +34,9 @@ flutter run
 
 <li><b>Contact Details Screen<i>(Shown when you double click on the card on home screen)</i><b></li>
 
-<img src="../fluttercontactsapp/screenshots/contact_details.jpg" width="300" height="600">
+![contact details page](/screenshots/contact_details.jpg)
 
 </ol>
-
-
-
 
 
 
