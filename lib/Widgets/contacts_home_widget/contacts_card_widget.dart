@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttercontactsapp/Widgets/popup_widget/show_full_contact_details.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/show_contact_details_widget.dart';
 import 'package:fluttercontactsapp/db_test.dart';
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
@@ -39,6 +40,20 @@ List<Widget> getList(BuildContext context,
       elevation: 2,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
+        onDoubleTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ShowFullContactDialog(
+                firstname: contact.firstName,
+                lastname: contact.lastName,
+                phoneNumber: contact.phoneNumber,
+                promptText: 'Contact Details',
+                email: contact.email,
+              ),
+            ),
+          );
+        },
         onLongPress: () {
           Navigator.push(
             context,
@@ -64,6 +79,7 @@ List<Widget> getList(BuildContext context,
                 ContactDetailsTextWidget(
                     fieldValue: contact.firstName + " " + contact.lastName,
                     phonenumber: contact.phoneNumber,
+                    email: contact.email,
                     type: "name"),
                 const SizedBox(
                   height: 10,
@@ -71,6 +87,7 @@ List<Widget> getList(BuildContext context,
                 ContactDetailsTextWidget(
                     fieldValue: contact.firstName + " " + contact.lastName,
                     phonenumber: contact.phoneNumber,
+                    email: contact.email,
                     type: "phoneNumber"),
               ],
             ),

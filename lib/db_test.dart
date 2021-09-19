@@ -30,60 +30,50 @@ class SQLiteDbProvider {
           "id": 1,
           "first_name": "James",
           "last_name": "Butt",
-          "phone": "5048451427",
+          "phone": "5046218927",
           "email": "jbutt@gmail.com"
         },
         {
           "id": 2,
           "first_name": "Josephine",
           "last_name": "Darakjy",
-          "phone": "8103749840",
+          "phone": "8102929388",
           "email": "josephine_darakjy@darakjy.org"
         },
         {
           "id": 3,
           "first_name": "Art",
           "last_name": "Venere",
-          "phone": "8562644130",
+          "phone": "8566368749",
           "email": "art@venere.org"
         },
         {
           "id": 4,
           "first_name": "Lenna",
           "last_name": "Paprocki",
-          "phone": "9079212010",
+          "phone": "9073854412",
           "email": "lpaprocki@hotmail.com"
         },
         {
           "id": 5,
           "first_name": "Donette",
           "last_name": "Foller",
-          "phone": "5135494561",
+          "phone": "5135701893",
           "email": "donette.foller@cox.net"
         },
         {
           "id": 6,
           "first_name": "Simona",
           "last_name": "Morasca",
-          "phone": "4198006759"
+          "phone": "4195032484",
+          "email": "simona@morasca.com"
         },
         {
           "id": 7,
           "first_name": "Mitsue",
           "last_name": "Tollner",
-          "phone": "7739248565"
-        },
-        {
-          "id": 8,
-          "first_name": "Leota",
-          "last_name": "Dilliard",
-          "phone": "4088131105"
-        },
-        {
-          "id": 9,
-          "first_name": "Sage",
-          "last_name": "Wieser",
-          "phone": "6057944895"
+          "phone": "7735736914",
+          "email": "mitsue_tollner@yahoo.com"
         }
       ];
       for (var i = 0; i < jsonData.length; i++) {
@@ -125,7 +115,13 @@ class SQLiteDbProvider {
       var result = await db.rawInsert(
           "INSERT Into Contacts (id, firstName, lastName, phoneNumber,email)"
           " VALUES (?, ?, ?, ?,?)",
-          [id, contact.firstName, contact.lastName, contact.phoneNumber,contact.email]);
+          [
+            id,
+            contact.firstName,
+            contact.lastName,
+            contact.phoneNumber,
+            contact.email
+          ]);
       return result;
     } catch (ex) {
       print(ex);
