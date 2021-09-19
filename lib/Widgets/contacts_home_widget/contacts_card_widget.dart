@@ -40,12 +40,12 @@ List<Widget> getList(BuildContext context) {
         elevation: 2,
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
+          onLongPress: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ShowContactDetailsDialog(
-                    contactDetails: contact, contactsList: contactList),
+                builder: (context) =>
+                    ShowContactDetailsDialog(contactDetails: contact),
               ),
             );
           },

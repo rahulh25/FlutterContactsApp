@@ -3,8 +3,6 @@ class ContactDetailsModel {
   String firstName;
   String lastName;
   String phoneNumber;
-  String email;
 
-  ContactDetailsModel(
-      this.id, this.firstName, this.lastName, this.phoneNumber, this.email);
+  ContactDetailsModel(this.id, this.firstName, this.lastName, this.phoneNumber);
 }

@@ -1,7 +1,8 @@
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
 
 class ContactServices {
-  var contactsJsonData = [
+  var contactsList = <ContactDetailsModel>[];
+  final contactsJsonData = [
     {
       "id": 1,
       "first_name": "James",
@@ -41,41 +42,47 @@ class ContactServices {
       "id": 6,
       "first_name": "Simona",
       "last_name": "Morasca",
-      "phone": "419-800-6759",
-      "email": "simona@morasca.com"
+      "phone": "419-800-6759"
     },
     {
       "id": 7,
       "first_name": "Mitsue",
       "last_name": "Tollner",
-      "phone": "773-924-8565",
-      "email": "mitsue_tollner@yahoo.com"
+      "phone": "773-924-8565"
     },
     {
       "id": 8,
       "first_name": "Leota",
       "last_name": "Dilliard",
-      "phone": "408-813-1105",
-      "email": "leota@hotmail.com"
+      "phone": "408-813-1105"
     },
     {
       "id": 9,
       "first_name": "Sage",
       "last_name": "Wieser",
-      "phone": "605-794-4895",
-      "email": "sage_wieser@cox.net"
+      "phone": "605-794-4895"
     },
   ];
-  List<ContactDetailsModel> getContactDetails(){
-    var contactsList = <ContactDetailsModel>[];
+
+  List<ContactDetailsModel> getContactDetails() {
     for (var i = 0; i < contactsJsonData.length; i++) {
       contactsList.add(ContactDetailsModel(
           int.parse(contactsJsonData[i]["id"].toString()),
           contactsJsonData[i]["first_name"].toString(),
           contactsJsonData[i]["last_name"].toString(),
-          contactsJsonData[i]["phone"].toString(),
-          contactsJsonData[i]["email"].toString()));
+          contactsJsonData[i]["phone"].toString()));
     }
     return contactsList;
+  }
+
+  void deleteData(int id){
+    contactsList.removeWhere((item)=>item.id==id);
+  }
+
+  void editData(int id,String firstname,String lastName,String phonenumber){
+    print(firstname);
+    int index=contactsList.indexWhere((element)=>element.id==id);
+    contactsList.insert(index,ContactDetailsModel(id, firstname, lastName, phonenumber));
+
   }
 }
