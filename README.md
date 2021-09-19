@@ -1,15 +1,47 @@
-# fluttercontactsapp
+# Contacts app with Flutter
 
-A new Flutter project.
+This project demontrates a contacts app using flutter. It uses SQLLite as it's database for data persiatance. The basix funcionalities provided to the user in this application are:
+
+<ol>
+<li>Add a contact</li>
+<li>Edit and Delete a contact</li>
+<li>Update a contact</li>
+<li>View a contact Details</li>
+</ol>
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run the project you can folow the following steps:
 
-A few resources to get you started if this is your first Flutter project:
+<ol>
+<li>Clone the repository or download the zip folder</li>
+<li>Make sure you have flutter and Android studio installed on your local machine</li>
+<li>Go into project folder and run the following command in your terminal</li>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```js
+flutter run
+```
+
+ <li> You can see the folliowing homepage pop up on your Emulator</li>
+
+<img src="../fluttercontactsapp/screenshots/homescreen.jpg" width="300" height="600">
+
+</ol>
+
+## Widgets/Screens in the App
+
+<ol>
+
+<li><b>Contact Details Screen<i>(Shown when you double click on the card on home screen)</i><b></li>
+
+<img src="../fluttercontactsapp/screenshots/contact_details.jpg" width="300" height="600">
+
+</ol>
+
+
+
+
+
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
