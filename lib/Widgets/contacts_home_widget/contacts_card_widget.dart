@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercontactsapp/Widgets/contacts_home_widget/contact_details_text_widget.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/show_contact_details_widget.dart';
+import 'package:fluttercontactsapp/db_test.dart';
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
-import 'package:fluttercontactsapp/services/contact_services.dart';
+
+import 'contact_details_text_widget.dart';
 
 class ContactsHomeWidget extends StatefulWidget {
   const ContactsHomeWidget({Key? key}) : super(key: key);
   @override
-  State<StatefulWidget> createState() {
-    return ContactsHomeWidgetState();
-  }
+  _ContactsHomeWidgetState createState() => _ContactsHomeWidgetState();
 }
 
-class ContactsHomeWidgetState extends State {
+class _ContactsHomeWidgetState extends State<ContactsHomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: getJsonConvertedData(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<ContactDetailsModel>> contactDetailslist) {
+    return FutureBuilder<List<ContactDetailsModel>>(
+      future: SQLiteDbProvider.db.getAllProducts(),
+      builder: (BuildContext context,
+          AsyncSnapshot<List<ContactDetailsModel>> snapshot) {
+        if (snapshot.hasData) {
           return SingleChildScrollView(
-              child: Column(children: getList(context, contactDetailslist)));
-        });
+              child: Column(children: getList(context, snapshot)));
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
   }
 }
 
@@ -53,7 +57,7 @@ List<Widget> getList(BuildContext context,
             child: Column(
               children: [
                 ContactDetailsTextWidget(
-                    fieldValue: contact.firstName + contact.lastName),
+                    fieldValue: contact.firstName +" "+ contact.lastName),
                 ContactDetailsTextWidget(fieldValue: contact.phoneNumber),
               ],
             ),
@@ -63,11 +67,4 @@ List<Widget> getList(BuildContext context,
     );
   }
   return childs;
-}
-
-Future<List<ContactDetailsModel>> getJsonConvertedData() async {
-  var services = ContactServices();
-  var contactList = <ContactDetailsModel>[];
-  contactList = await services.getContactDetails();
-  return contactList;
 }

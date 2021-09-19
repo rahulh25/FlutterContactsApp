@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercontactsapp/services/contact_services.dart';
+import 'package:fluttercontactsapp/model/contact_details_model.dart';
 
+import '../../db_test.dart';
 import '../../main.dart';
 
 class ConfirmDialogBoxWidget extends StatefulWidget {
@@ -41,19 +42,18 @@ class ConfirmDialogBoxWidgetState extends State<ConfirmDialogBoxWidget> {
         TextButton(
           child: Text(widget.type),
           onPressed: () async {
-            var contactService = ContactServices();
             if (widget.type == "Edit") {
-              contactService.editData(widget.id, widget.firstname,
-                  widget.lastname, widget.phoneNumber);
+              SQLiteDbProvider.db.update(ContactDetailsModel(widget.id,
+                  widget.firstname, widget.lastname, widget.phoneNumber));
             } else if (widget.type == "Delete") {
-              contactService.deleteData(widget.id);
+              SQLiteDbProvider.db.delete(widget.id);
             } else {
-              contactService.addData(
-                  widget.firstname, widget.lastname, widget.phoneNumber);
+              SQLiteDbProvider.db.insert(ContactDetailsModel(widget.id,
+                  widget.firstname, widget.lastname, widget.phoneNumber));
             }
             Navigator.pop(context, true);
-            await Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ContactsApp()));
+            await Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ContactsApp()));
             setState(() {});
           },
         ),

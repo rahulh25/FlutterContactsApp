@@ -1,15 +1,13 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
-
-
 import 'Widgets/contacts_home_widget/bottom_button_widget.dart';
+//import 'Widgets/contacts_home_widget/contacts_card_backup_widget.dart';
 import 'Widgets/contacts_home_widget/contacts_card_widget.dart';
 
-void main() => runApp(const ContactsApp());
+void main() => runApp(ContactsApp());
 
 /// This is the main application widget.
 class ContactsApp extends StatelessWidget {
-  const ContactsApp({Key? key}) : super(key: key);
-
   static const String _title = 'Contacts';
 
   @override
