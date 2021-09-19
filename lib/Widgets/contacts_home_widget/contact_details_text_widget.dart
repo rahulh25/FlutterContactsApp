@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ContactDetailsTextWidget extends StatefulWidget {
-  const ContactDetailsTextWidget({Key? key, required this.fieldValue})
+  const ContactDetailsTextWidget(
+      {Key? key,
+      required this.fieldValue,
+      required this.phonenumber,
+      required this.type})
       : super(key: key);
   final String fieldValue;
+  final String type;
+  final int phonenumber;
   @override
   State<StatefulWidget> createState() {
     return ContactDetailsTextWidgetState();
@@ -18,11 +24,17 @@ class ContactDetailsTextWidgetState extends State<ContactDetailsTextWidget> {
         // default text style
         children: <TextSpan>[
           TextSpan(
-              text: widget.fieldValue,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  color: Colors.white)),
+              text: widget.type == "name"
+                  ? widget.fieldValue
+                  : widget.phonenumber.toString(),
+              style: TextStyle(
+                  fontWeight: widget.type == "name"
+                      ? FontWeight.bold
+                      : FontWeight.normal,
+                  fontSize: widget.type == "name" ? 22 : 18,
+                  color: widget.type == "name"
+                      ? Colors.pinkAccent
+                      : Colors.cyan[900])),
         ],
       ),
     );

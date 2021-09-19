@@ -25,6 +25,11 @@ class PaddedTextFieldWidgetsState extends State<PaddedTextFieldWidgets> {
         width: 350,
         height: 50,
         child: TextField(
+          keyboardType: widget.labeltext == "Enter Phone Number"
+              ? TextInputType.number
+              : widget.labeltext == "Enter Email"
+                  ? TextInputType.emailAddress
+                  : TextInputType.text,
           controller: widget.textEditingController,
           autocorrect: true,
           decoration: InputDecoration(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/show_contact_details_widget.dart';
 import 'package:fluttercontactsapp/db_test.dart';
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
-
 import 'contact_details_text_widget.dart';
 
 class ContactsHomeWidget extends StatefulWidget {
@@ -33,38 +32,52 @@ List<Widget> getList(BuildContext context,
     AsyncSnapshot<List<ContactDetailsModel>> contactList) {
   List<Widget> childs = <Widget>[];
   for (var contact in contactList.requireData) {
-    childs.add(
-      Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        color: Colors.green[900],
-        elevation: 2,
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onLongPress: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ShowContactDetailsDialog(contactDetails: contact),
-              ),
-            );
-          },
-          child: SizedBox(
-            width: 400,
-            height: 80,
+    childs.add(Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      elevation: 2,
+      child: InkWell(
+        splashColor: Colors.blue.withAlpha(30),
+        onLongPress: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  ShowContactDetailsDialog(contactDetails: contact),
+            ),
+          );
+        },
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
             child: Column(
-              children: [
+              children: <Widget>[
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.width * 0.4,
+                  child: Image.asset('assets/images/user.png'),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
                 ContactDetailsTextWidget(
-                    fieldValue: contact.firstName +" "+ contact.lastName),
-                ContactDetailsTextWidget(fieldValue: contact.phoneNumber),
+                    fieldValue: contact.firstName + " " + contact.lastName,
+                    phonenumber: contact.phoneNumber,
+                    type: "name"),
+                const SizedBox(
+                  height: 10,
+                ),
+                ContactDetailsTextWidget(
+                    fieldValue: contact.firstName + " " + contact.lastName,
+                    phonenumber: contact.phoneNumber,
+                    type: "phoneNumber"),
               ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
   return childs;
 }

@@ -17,14 +17,17 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
   TextEditingController firstNameFieldController = TextEditingController();
   TextEditingController lastNameFieldController = TextEditingController();
   TextEditingController phoneNumberFieldController = TextEditingController();
+  TextEditingController emailFieldController = TextEditingController();
   @override
   void initState() {
     firstNameFieldController =
         TextEditingController(text: widget.contactDetails.firstName);
     lastNameFieldController =
         TextEditingController(text: widget.contactDetails.lastName);
-    phoneNumberFieldController =
-        TextEditingController(text: widget.contactDetails.phoneNumber);
+    phoneNumberFieldController = TextEditingController(
+        text: widget.contactDetails.phoneNumber.toString());
+    emailFieldController =
+        TextEditingController(text: widget.contactDetails.email);
     super.initState();
   }
 
@@ -50,6 +53,10 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                   hintText: 'Phone Number',
                   labeltext: 'Enter Phone Number',
                   textEditingController: phoneNumberFieldController),
+              PaddedTextFieldWidgets(
+                  hintText: 'Email',
+                  labeltext: 'Enter Email',
+                  textEditingController: emailFieldController),
               Row(
                 children: [
                   Padding(
@@ -73,7 +80,9 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                                 id: widget.contactDetails.id,
                                 firstname: firstNameFieldController.text,
                                 lastname: lastNameFieldController.text,
-                                phoneNumber: phoneNumberFieldController.text,
+                                phoneNumber:
+                                    int.parse(phoneNumberFieldController.text),
+                                email: emailFieldController.text,
                                 dialogText: "Are you sure you want to edit?",
                                 promptText: "Edit Contact",
                                 type: "Edit"),
@@ -103,7 +112,9 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                                 id: widget.contactDetails.id,
                                 firstname: firstNameFieldController.text,
                                 lastname: lastNameFieldController.text,
-                                phoneNumber: phoneNumberFieldController.text,
+                                phoneNumber:
+                                    int.parse(phoneNumberFieldController.text),
+                                email: emailFieldController.text,
                                 dialogText:
                                     "Are you sure you want to delete this contact?",
                                 promptText: "Delete Contact",

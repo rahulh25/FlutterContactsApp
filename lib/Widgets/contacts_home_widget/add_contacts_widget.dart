@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/Widgets/popup_widget/confirm_dialog_widget.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/padded_text_fields_widget.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 class AddContactsDialog extends StatefulWidget {
-  const AddContactsDialog({Key? key})
-      : super(key: key);
+  const AddContactsDialog({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return AddContactsDialogState();
@@ -15,14 +15,13 @@ class AddContactsDialogState extends State {
   TextEditingController firstNameFieldController = TextEditingController();
   TextEditingController lastNameFieldController = TextEditingController();
   TextEditingController phoneNumberFieldController = TextEditingController();
+  TextEditingController emailFieldController = TextEditingController();
   @override
   void initState() {
-    firstNameFieldController =
-        TextEditingController(text: "");
-    lastNameFieldController =
-        TextEditingController(text: "");
-    phoneNumberFieldController =
-        TextEditingController(text: "");
+    firstNameFieldController = TextEditingController(text: "");
+    lastNameFieldController = TextEditingController(text: "");
+    phoneNumberFieldController = TextEditingController(text: "");
+    emailFieldController = TextEditingController(text: "");
     super.initState();
   }
 
@@ -48,6 +47,10 @@ class AddContactsDialogState extends State {
                   hintText: 'Phone Number',
                   labeltext: 'Enter Phone Number',
                   textEditingController: phoneNumberFieldController),
+              PaddedTextFieldWidgets(
+                  hintText: 'Email',
+                  labeltext: 'Enter Email',
+                  textEditingController: emailFieldController),
               Row(
                 children: [
                   Padding(
@@ -71,7 +74,8 @@ class AddContactsDialogState extends State {
                                 id: -1,
                                 firstname: firstNameFieldController.text,
                                 lastname: lastNameFieldController.text,
-                                phoneNumber: phoneNumberFieldController.text,
+                                phoneNumber:int.parse(phoneNumberFieldController.text),
+                                email:emailFieldController.text,
                                 dialogText: "Are you sure you want to add?",
                                 promptText: "Add Contact",
                                 type: "Add"),
