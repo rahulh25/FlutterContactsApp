@@ -75,14 +75,13 @@ class ContactServices {
     return contactsList;
   }
 
-  void deleteData(int id){
-    contactsList.removeWhere((item)=>item.id==id);
+  void deleteData(int id) {
+    contactsList.removeWhere((item) => item.id == id);
   }
 
-  void editData(int id,String firstname,String lastName,String phonenumber){
+  void editData(int id, String firstname, String lastName, String phonenumber) {
     print(firstname);
-    int index=contactsList.indexWhere((element)=>element.id==id);
-    contactsList.insert(index,ContactDetailsModel(id, firstname, lastName, phonenumber));
-
+    contactsList.removeWhere((element) => element.id == id);
+    contactsList.add(ContactDetailsModel(id, firstname, lastName, phonenumber));
   }
 }

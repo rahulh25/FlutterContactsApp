@@ -64,11 +64,21 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                         padding: const EdgeInsets.only(
                             left: 40, right: 40, top: 15, bottom: 15),
                       ),
-                      onPressed: () => ConfirmDialogBoxWidget(
-                          id: widget.contactDetails.id,
-                          firstname: firstNameFieldController.text,
-                          lastname: lastNameFieldController.text,
-                          phoneNumber: phoneNumberFieldController.text),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ConfirmDialogBoxWidget(
+                                id: widget.contactDetails.id,
+                                firstname: firstNameFieldController.text,
+                                lastname: lastNameFieldController.text,
+                                phoneNumber: phoneNumberFieldController.text,
+                                dialogText: "Are you sure you want to edit?",
+                                promptText: "Edit Contact",
+                                type: "Edit"),
+                          ),
+                        );
+                      },
                       child: const Text('Edit'),
                     ),
                   ),
@@ -84,7 +94,22 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                         padding: const EdgeInsets.only(
                             left: 40, right: 40, top: 15, bottom: 15),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ConfirmDialogBoxWidget(
+                                id: widget.contactDetails.id,
+                                firstname: firstNameFieldController.text,
+                                lastname: lastNameFieldController.text,
+                                phoneNumber: phoneNumberFieldController.text,
+                                dialogText:
+                                    "Are you sure you want to delete this contact?",
+                                promptText: "Delete Contact",
+                                type: "Delete"),
+                          ),
+                        );
+                      },
                       child: const Text('Delete'),
                     ),
                   )
