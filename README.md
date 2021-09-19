@@ -41,12 +41,12 @@ flutter run
 <li><b>Add Contact Page<i>(Shown when you double click on add button at the bottom of the page)</i></b></li>
 <br>
 
-![add screen](/screenshots/add_screen.jpg)
+![add screen](/screenshots/addscreen.jpg)
 
 <li><b>Edit/Delete Contact Page<i>(Shown when you long press on the card on home screen)</i></b></li>
 <br>
 
-![edit/delete](/screenshots/edit_page.jpg)
+![edit/delete](/screenshots/editpage.jpg)
 
 This page will prepopulate the data based on your selection.
 <br>
@@ -54,7 +54,7 @@ This page will prepopulate the data based on your selection.
 <li><b>There are also some error popups to make the user aware of any error in the form</i></b></li>
 <br>
 
-![error](/screenshots/error.jpg)
+![error](/screenshots/errors.jpg)
 
 <br>
 </ol>
