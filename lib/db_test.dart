@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:io';
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
 import 'package:path/path.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:path_provider/path_provider.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:sqflite/sqflite.dart';
 
 class SQLiteDbProvider {
@@ -99,7 +101,6 @@ class SQLiteDbProvider {
     final db = await database;
     List<Map> results = await db.query("Contacts",
         columns: ContactDetailsModel.columns, orderBy: "id ASC");
-    // ignore: deprecated_member_use
     List<ContactDetailsModel> products = <ContactDetailsModel>[];
     for (var result in results) {
       ContactDetailsModel product = ContactDetailsModel.fromMap(result);

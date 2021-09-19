@@ -22,7 +22,7 @@ class _ContactsHomeWidgetState extends State<ContactsHomeWidget> {
           return SingleChildScrollView(
               child: Column(children: getList(context, snapshot)));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
