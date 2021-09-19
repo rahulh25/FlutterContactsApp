@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/Widgets/popup_widget/confirm_dialog_widget.dart';
+import 'package:fluttercontactsapp/Widgets/popup_widget/error_dialog_widget.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/padded_text_fields_widget.dart';
 import 'package:fluttercontactsapp/model/contact_details_model.dart';
 
@@ -18,6 +19,7 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
   TextEditingController lastNameFieldController = TextEditingController();
   TextEditingController phoneNumberFieldController = TextEditingController();
   TextEditingController emailFieldController = TextEditingController();
+  TextEditingController searchFieldController = TextEditingController();
   @override
   void initState() {
     firstNameFieldController =
@@ -28,6 +30,7 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
         text: widget.contactDetails.phoneNumber.toString());
     emailFieldController =
         TextEditingController(text: widget.contactDetails.email);
+    searchFieldController = TextEditingController(text: "");
     super.initState();
   }
 
@@ -73,21 +76,73 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
                             left: 40, right: 40, top: 15, bottom: 15),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ConfirmDialogBoxWidget(
-                                id: widget.contactDetails.id,
-                                firstname: firstNameFieldController.text,
-                                lastname: lastNameFieldController.text,
-                                phoneNumber:
-                                    int.parse(phoneNumberFieldController.text),
-                                email: emailFieldController.text,
-                                dialogText: "Are you sure you want to edit?",
-                                promptText: "Edit Contact",
-                                type: "Edit"),
-                          ),
-                        );
+                        if (firstNameFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "First Name is required",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (lastNameFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Last Name is required",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (phoneNumberFieldController.text == "" ||
+                            phoneNumberFieldController.text.length != 10) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Phone Number is required and should be 10 characters",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (emailFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Email is Required",
+                              ),
+                            ),
+                          );
+                        }else if(!emailFieldController.text.contains('@')){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Email not in correct Format Required",
+                              ),
+                            ),
+                          );
+                        } 
+                        else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ConfirmDialogBoxWidget(
+                                  id: widget.contactDetails.id,
+                                  firstname: firstNameFieldController.text,
+                                  lastname: lastNameFieldController.text,
+                                  phoneNumber: int.parse(
+                                      phoneNumberFieldController.text),
+                                  email: emailFieldController.text,
+                                  dialogText: "Are you sure you want to edit?",
+                                  promptText: "Edit Contact",
+                                  type: "Edit"),
+                            ),
+                          );
+                        }
                       },
                       child: const Text('Edit'),
                     ),

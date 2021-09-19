@@ -15,9 +15,7 @@ class ContactsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: _title,
-        theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFEFEFEF)),
         home: Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: const Text(_title),
             backgroundColor: Colors.lightGreen[900],

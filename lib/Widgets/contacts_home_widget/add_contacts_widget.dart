@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/Widgets/popup_widget/confirm_dialog_widget.dart';
+import 'package:fluttercontactsapp/Widgets/popup_widget/error_dialog_widget.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/padded_text_fields_widget.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 
@@ -67,20 +68,75 @@ class AddContactsDialogState extends State {
                             left: 40, right: 40, top: 15, bottom: 15),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ConfirmDialogBoxWidget(
-                                id: -1,
-                                firstname: firstNameFieldController.text,
-                                lastname: lastNameFieldController.text,
-                                phoneNumber:int.parse(phoneNumberFieldController.text),
-                                email:emailFieldController.text,
-                                dialogText: "Are you sure you want to add?",
-                                promptText: "Add Contact",
-                                type: "Add"),
-                          ),
-                        );
+                        if (firstNameFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "First Name is required",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (lastNameFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Last Name is required",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (phoneNumberFieldController.text == "" ||
+                            phoneNumberFieldController.text.length != 10) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText:
+                                    "Phone Number is required and should be 10 characters",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (emailFieldController.text == "") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText: "Email is Required",
+                              ),
+                            ),
+                          );
+                        }
+                        else if (!emailFieldController.text.contains('@')) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ErrorDialog(
+                                dialogText:
+                                    "Email not in correct Format Required",
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ConfirmDialogBoxWidget(
+                                  id: -1,
+                                  firstname: firstNameFieldController.text,
+                                  lastname: lastNameFieldController.text,
+                                  phoneNumber: int.parse(
+                                      phoneNumberFieldController.text),
+                                  email: emailFieldController.text,
+                                  dialogText: "Are you sure you want to add?",
+                                  promptText: "Add Contact",
+                                  type: "Add"),
+                            ),
+                          );
+                        }
                       },
                       child: const Text('Add'),
                     ),

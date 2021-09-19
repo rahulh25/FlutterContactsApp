@@ -26,7 +26,8 @@ class ShowFullContactDialogState extends State<ShowFullContactDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(widget.promptText),
-      content: Column(
+      content: Center(
+          child: Column(
         children: <Widget>[
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
@@ -55,7 +56,7 @@ class ShowFullContactDialogState extends State<ShowFullContactDialog> {
               email: widget.email,
               type: "email"),
         ],
-      ),
+      )),
       actions: [
         TextButton(
           child: const Text("Ok"),

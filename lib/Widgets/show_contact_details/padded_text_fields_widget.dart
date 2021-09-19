@@ -24,7 +24,7 @@ class PaddedTextFieldWidgetsState extends State<PaddedTextFieldWidgets> {
       child: SizedBox(
         width: 350,
         height: 50,
-        child: TextField(
+        child: TextFormField(
           keyboardType: widget.labeltext == "Enter Phone Number"
               ? TextInputType.number
               : widget.labeltext == "Enter Email"

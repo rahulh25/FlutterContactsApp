@@ -106,6 +106,26 @@ class SQLiteDbProvider {
     return products;
   }
 
+  Future<List<ContactDetailsModel>> searchdata(String value) async {
+    final db = await database;
+    List<ContactDetailsModel> products = <ContactDetailsModel>[];
+    try {
+      String strwhere =
+          "firstName like '%" + value + "'% or lastName like '%" + value + "'%";
+      List<Map> results = await db.query("Contacts",
+          columns: ContactDetailsModel.columns,
+          orderBy: "id ASC",
+          where: strwhere);
+      for (var result in results) {
+        ContactDetailsModel product = ContactDetailsModel.fromMap(result);
+        products.add(product);
+      }
+    } catch (ex) {
+      print(ex);
+    }
+    return products;
+  }
+
   insert(ContactDetailsModel contact) async {
     final db = await database;
     try {

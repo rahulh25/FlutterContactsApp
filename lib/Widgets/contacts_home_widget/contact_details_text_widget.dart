@@ -35,7 +35,11 @@ class ContactDetailsTextWidgetState extends State<ContactDetailsTextWidget> {
                   fontWeight: widget.type == "name"
                       ? FontWeight.bold
                       : FontWeight.normal,
-                  fontSize: widget.type == "name" ? 22 : 18,
+                  fontSize: widget.type == "name"
+                      ? 22
+                      : widget.type == "email"
+                          ? 16
+                          : 18,
                   color: widget.type == "name"
                       ? Colors.pinkAccent
                       : widget.type == "email"
