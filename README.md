@@ -11,7 +11,6 @@ This project demontrates a contacts app using flutter. It uses SQLLite as it's d
 
 ## Getting Started
 
-
 To run the project you can folow the following steps:
 
 <ol>
@@ -22,9 +21,10 @@ To run the project you can folow the following steps:
 ```js
 flutter run
 ```
+
  <li> You can see the folliowing homepage pop up on your Emulator</li>
 
- ![home screen](/screenshots/homescreen.jpg)
+![home screen](/screenshots/homescreen.jpg)
 
 </ol>
 
@@ -32,13 +32,32 @@ flutter run
 
 <ol>
 
-<li><b>Contact Details Screen<i>(Shown when you double click on the card on home screen)</i><b></li>
+<li><b>Contact Details Screen<i>(Shown when you double click on the card on home screen)</i></b></li>
+<br>
 
-![contact details page](/screenshots/contact_details.jpg)
+![contact details](/screenshots/contact_details.jpg)
 
+<br>
+<li><b>Add Contact Page<i>(Shown when you double click on add button at the bottom of the page)</i></b></li>
+<br>
+
+![add screen](/screenshots/add_screen.jpg)
+
+<li><b>Edit/Delete Contact Page<i>(Shown when you long press on the card on home screen)</i></b></li>
+<br>
+
+![edit/delete](/screenshots/edit_page.jpg)
+
+This page will prepopulate the data based on your selection.
+<br>
+
+<li><b>There are also some error popups to make the user aware of any error in the form</i></b></li>
+<br>
+
+![error](/screenshots/error.jpg)
+
+<br>
 </ol>
-
-
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
