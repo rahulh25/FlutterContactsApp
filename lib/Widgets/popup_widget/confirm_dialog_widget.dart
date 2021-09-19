@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/services/contact_services.dart';
 
+import '../../main.dart';
+
 class ConfirmDialogBoxWidget extends StatefulWidget {
   const ConfirmDialogBoxWidget(
       {Key? key,
@@ -37,8 +39,8 @@ class ConfirmDialogBoxWidgetState extends State<ConfirmDialogBoxWidget> {
           onPressed: () => Navigator.pop(context, true),
         ),
         TextButton(
-          child: const Text("Continue"),
-          onPressed: () {
+          child: Text(widget.type),
+          onPressed: () async {
             var contactService = ContactServices();
             if (widget.type == "Edit") {
               contactService.editData(widget.id, widget.firstname,
@@ -47,6 +49,9 @@ class ConfirmDialogBoxWidgetState extends State<ConfirmDialogBoxWidget> {
               contactService.deleteData(widget.id);
             }
             Navigator.pop(context, true);
+            await Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const ContactsApp()));
+            setState(() {});
           },
         ),
       ],

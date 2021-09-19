@@ -25,6 +25,7 @@ class ShowContactDetailsDialogState extends State<ShowContactDetailsDialog> {
         TextEditingController(text: widget.contactDetails.lastName);
     phoneNumberFieldController =
         TextEditingController(text: widget.contactDetails.phoneNumber);
+    super.initState();
   }
 
   @override

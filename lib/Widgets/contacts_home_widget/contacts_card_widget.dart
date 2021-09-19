@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercontactsapp/Widgets/contacts_home_widget/contact_details_text_widget.dart';
 import 'package:fluttercontactsapp/Widgets/show_contact_details/show_contact_details_widget.dart';
+import 'package:fluttercontactsapp/model/contact_details_model.dart';
 import 'package:fluttercontactsapp/services/contact_services.dart';
 
 class ContactsHomeWidget extends StatefulWidget {
@@ -14,23 +15,20 @@ class ContactsHomeWidget extends StatefulWidget {
 class ContactsHomeWidgetState extends State {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints) {
-      return SingleChildScrollView(
-          child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: viewportConstraints.maxHeight,
-              ),
-              child: Column(children: getList(context))));
-    });
+    return FutureBuilder(
+        future: getJsonConvertedData(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<ContactDetailsModel>> contactDetailslist) {
+          return SingleChildScrollView(
+              child: Column(children: getList(context, contactDetailslist)));
+        });
   }
 }
 
-List<Widget> getList(BuildContext context) {
-  var services = ContactServices();
-  var contactList = services.getContactDetails();
-  List<Widget> childs = [];
-  for (var contact in contactList) {
+List<Widget> getList(BuildContext context,
+    AsyncSnapshot<List<ContactDetailsModel>> contactList) {
+  List<Widget> childs = <Widget>[];
+  for (var contact in contactList.requireData) {
     childs.add(
       Card(
         shape: RoundedRectangleBorder(
@@ -68,4 +66,11 @@ List<Widget> getList(BuildContext context) {
     );
   }
   return childs;
+}
+
+Future<List<ContactDetailsModel>> getJsonConvertedData() async {
+  var services = ContactServices();
+  var contactList = <ContactDetailsModel>[];
+  contactList = await services.getContactDetails();
+  return contactList;
 }
